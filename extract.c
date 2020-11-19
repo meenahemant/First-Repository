@@ -35,7 +35,8 @@ void envelope_extract (xmlNode *node, envelope_bmd *ns){
                     /* Dynamically allocating memory */
                     ns->MessageType =  (char *)malloc(n*sizeof(char));
                     /* Copying content  */
-                    strcpy(ns->MessageType ,(char *)xmlNodeGetContent(node));
+                    //strcpy(ns->MessageType ,(char *)xmlNodeGetContent(node));
+                    strncat(ns->MessageID,(char *) xmlNodeGetContent(node),sizeof((char *) xmlNodeGetContent(node)));
                     printf(" MessageType is: %s\n",ns->MessageType );
                     /* Checking for Null values */
                     if(strcmp(ns->MessageType, "") ==0){
