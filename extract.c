@@ -21,7 +21,8 @@ void envelope_extract (xmlNode *node, envelope_bmd *ns){
                     /* Dynamically allocating memory */
                     ns->MessageID = (char *)malloc(n*sizeof(char));
 
-                    strcpy(ns->MessageID,(char *) xmlNodeGetContent(node));
+                    //strcpy(ns->MessageID,(char *) xmlNodeGetContent(node));
+                    memccpy(ns->MessageID,(char *) xmlNodeGetContent(node),strlen((char *) xmlNodeGetContent(node))+1);
                     printf(" MessageID is: %s\n",ns->MessageID );
                     if(strcmp(ns->MessageID, "") ==0){
                         free(ns->MessageID);
